@@ -1,0 +1,24 @@
+
+{{ define "main" }}
+{{- partial "jumbotron.html" . -}}
+<div class="container">
+
+<div class="row mb-3">
+<h5><b>Update</b> <span class="badge badge-danger">Hot</span></h5>
+</div>
+
+{{.Content}}
+<div class="row">
+    {{ range .Pages }}
+        <div class="card mr-4 mb-4" style="width: 16rem;">
+            <img src="{{ with .Params.image }}{{ . }}{{ end }}" class="card-img-top" alt="">
+            <div class="card-body">
+                <p class="card-text"><a href="{{.Permalink}}">{{.Title}}</a></p>
+                <p class="card-text"><small class="text-muted">{{.Date.Format "2006-01-02"}}</small></p>
+            </div>
+        </div>
+    {{ end }}
+</div>
+
+</div>
+{{ end }}

@@ -1,0 +1,47 @@
+
+{{ define "main" }}
+<div class="container">
+
+<section id="main">
+    <img src="{{ with .Params.image }}{{ . }}{{ end }}" class="img-fluid mb-3 mt-3" alt="Responsive image">
+  <h2 id="title">{{ .Title }}</h2>
+  <h6 id="date" class="small">{{ .Date.Format "Mon Jan 2, 2006" }} | by {{.Params.Author}}</h6>
+  <div>
+        <article id="content" class="mt-4">
+           {{ .Content }}
+        </article>
+  </div>
+</section>
+
+<aside id="meta">
+    <div>
+    {{ with .Params.topics }}
+    <ul id="topics">
+      {{ range . }}
+        <li><a href="{{ `topics` | absURL}}{{ . | urlize }}">{{ . }}</a> </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+    {{ with .Params.tags }}
+    <ul id="tags">
+      {{ range . }}
+        <li> <a href="{{ `tags` | absURL }}{{ . | urlize }}">{{ . }}</a> </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+    </div>
+
+    <h5 class="mt-5">Baca juga :</h5>
+    <div>
+        {{ with .PrevInSection }}
+          <a class="previous" href="{{.Permalink}}"> {{.Title}}</a>
+        {{ end }}
+        <br>
+        {{ with .NextInSection }}
+          <a class="next" href="{{.Permalink}}"> {{.Title}}</a>
+        {{ end }}
+    </div>
+</aside>
+
+</div>
+{{ end }}
