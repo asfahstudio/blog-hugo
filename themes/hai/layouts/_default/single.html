@@ -3,45 +3,61 @@
 <div class="container">
 
 <section id="main">
-    <img src="{{ with .Params.image }}{{ . }}{{ end }}" class="img-fluid mb-3 mt-3" alt="Responsive image">
-  <h2 id="title">{{ .Title }}</h2>
-  <h6 id="date" class="small">{{ .Date.Format "Mon Jan 2, 2006" }} | by {{.Params.Author}}</h6>
-  <div>
-        <article id="content" class="mt-4">
-           {{ .Content }}
-        </article>
+  <div class="row mt-5">
+
+    <div class="col-lg-8 mb-3">
+      <div class="card" style="">
+        <div class="card-body">
+          <p class="card-text font-weight-light mb-3">Penulis, {{.Params.Author}} <span class="small text-muted">| Update, {{ .Date.Format "Mon Jan 2, 2006" }}</span></p>
+          <h2 class="card-title font-weight-bold">{{ .Title }}</h2>
+          <hr>
+          <img src="{{ with .Params.image }}{{ . }}{{ end }}" class="card-img-top mt-3" alt="">
+          <p class="card-text">{{ .Content }}</p>
+          <aside id="meta">
+              <div>
+              {{ with .Params.topics }}
+              <ul id="topics">
+                {{ range . }}
+                  <li><a href="{{ `topics` | absURL}}{{ . | urlize }}">{{ . }}</a> </li>
+                {{ end }}
+              </ul>
+              {{ end }}
+              {{ with .Params.tags }}
+              <ul id="tags">
+                {{ range . }}
+                  <li> <a href="{{ `tags` | absURL }}{{ . | urlize }}">{{ . }}</a> </li>
+                {{ end }}
+              </ul>
+              {{ end }}
+              </div>
+          
+              <h6 class="mt-5">Baca juga :</h6>
+              <div>
+                  {{ with .PrevInSection }}
+                    <a class="previous" href="{{.Permalink}}"> {{.Title}}</a>
+                  {{ end }}
+                  <br>
+                  {{ with .NextInSection }}
+                    <a class="next" href="{{.Permalink}}"> {{.Title}}</a>
+                  {{ end }}
+              </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-lg-4">
+      <div class="card" style="">
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold">Artikel terbaru</h4>
+          <hr>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
-
-<aside id="meta">
-    <div>
-    {{ with .Params.topics }}
-    <ul id="topics">
-      {{ range . }}
-        <li><a href="{{ `topics` | absURL}}{{ . | urlize }}">{{ . }}</a> </li>
-      {{ end }}
-    </ul>
-    {{ end }}
-    {{ with .Params.tags }}
-    <ul id="tags">
-      {{ range . }}
-        <li> <a href="{{ `tags` | absURL }}{{ . | urlize }}">{{ . }}</a> </li>
-      {{ end }}
-    </ul>
-    {{ end }}
-    </div>
-
-    <h5 class="mt-5">Baca juga :</h5>
-    <div>
-        {{ with .PrevInSection }}
-          <a class="previous" href="{{.Permalink}}"> {{.Title}}</a>
-        {{ end }}
-        <br>
-        {{ with .NextInSection }}
-          <a class="next" href="{{.Permalink}}"> {{.Title}}</a>
-        {{ end }}
-    </div>
-</aside>
 
 </div>
 {{ end }}

@@ -1,16 +1,13 @@
 
 {{ define "main" }}
-{{- partial "jumbotron.html" . -}}
-<div class="container">
 
-<div class="row mb-3">
-<h5><b>Update</b> <span class="badge badge-danger">Hot</span></h5>
-</div>
+{{- partial "jumbotron.html" . -}}
+<div class="container mt-5">
 
 {{.Content}}
-<div class="row">
-    {{ range .Pages }}
-        <div class="card mr-4 mb-4" style="width: 16rem;">
+<div class="row justify-content-center">
+    {{ range (.Paginator 4).Pages }}
+        <div class="card mr-4 mb-4 shadow-sm rounded" style="width: 16rem;">
             <img src="{{ with .Params.image }}{{ . }}{{ end }}" class="card-img-top" alt="">
             <div class="card-body">
                 <p class="card-text"><a href="{{.Permalink}}">{{.Title}}</a></p>
@@ -19,6 +16,12 @@
         </div>
     {{ end }}
 </div>
+
+<div class="row justify-content-center mt-3">
+    {{ template "_internal/pagination.html" . }}
+</div>
+
+
 
 </div>
 {{ end }}
