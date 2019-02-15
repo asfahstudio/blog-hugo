@@ -8,11 +8,11 @@
     <div class="col-lg-8 mb-3">
       <div class="card" style="">
         <div class="card-body">
-          <p class="card-text font-weight-light mb-3">Penulis, {{.Params.Author}} <span class="small text-muted">| Update, {{ .Date.Format "Mon Jan 2, 2006" }}</span></p>
+          <p class="card-text font-weight-light mb-3 small">by, {{.Params.Author}} <span class="small text-muted">| Update, {{ .Date.Format "Mon Jan 2, 2006" }}</span></p>
           <h2 class="card-title font-weight-bold">{{ .Title }}</h2>
           <hr>
           <img src="{{ with .Params.image }}{{ . }}{{ end }}" class="card-img-top mt-3" alt="">
-          <p class="card-text">{{ .Content }}</p>
+          <p class="card-text mt-5 text-justify mb-5">{{ .Content }}</p>
           <aside id="meta">
               <div>
               {{ with .Params.topics }}
@@ -31,8 +31,8 @@
               {{ end }}
               </div>
           
-              <h6 class="mt-5">Baca juga :</h6>
-              <div>
+              <p class="" style="margin-bottom: -20px;margin-top: 200px;">Baca juga :</p>
+              <p>
                   {{ with .PrevInSection }}
                     <a class="previous" href="{{.Permalink}}"> {{.Title}}</a>
                   {{ end }}
@@ -40,7 +40,7 @@
                   {{ with .NextInSection }}
                     <a class="next" href="{{.Permalink}}"> {{.Title}}</a>
                   {{ end }}
-              </div>
+              </p>
           </aside>
         </div>
       </div>
