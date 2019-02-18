@@ -6,22 +6,34 @@ author: "asfah"
 image: "/linux/linux.png"
 ---
 
+basa-basi.........
+
 Sebelum kita membahas tentang apa itu linux, alangkah baiknya kita mengetahui hal-hal berikut ini:
 
 - apa itu sistem operasi ?
 - fungsi sistem operasi ?
 
-### Sistem Operasi atau Operation System (OS) ?
+#### Sistem Operasi atau Operation System (OS) ?
 
 Sebuah perangkat lunak yang berfungsi sebagai sistem dasar pada sebuah perangkat.
 
-### Fungsi OS ?
+#### Fungsi OS ?
 
 - Manajemen kinerja perangkat
 - Wadah dari aplikasi
 - Optimalisasi kerja perangkat
 - Mengontrol kinerja perangkat
+  
+.
 
-### Linux ?
+.
+
+.
+
+core in the core.........
+
+## **Linux ?**
 
 Software sistem operasi yang sifatnya open source dan gratis untuk di dapatkan maupun di sebarluaskan dengan lisensi GNU.
+
+*sumber: linuxserrr*
